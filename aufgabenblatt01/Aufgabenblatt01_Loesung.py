@@ -29,10 +29,10 @@
 ## Aufgabe 2: Operationen
 #Betrachten Sie die folgenden Python-Ausdrücke und bestimmen Sie zunächst ohne Hilfe des Computers ihren Wert und den Typ des Werts. Überprüfen Sie Ihr Ergebnis danach, indem Sie die Ausdrücke mit Python auswerten.
 
-#i = -7 + 3 * 8 = 17 / 17
-#i = 17 / (5/3) * 4 = 40,7999 / code = 40,8
-#i = (9 + (3 - (2 + 3))) / 2 = 3.5 / 3.5
-#i = 5**4/2 = 312.5 / 312.5
+#i = -7 + 3 * 8 = 17 / 17 typ int
+#i = 17 / (5/3) * 4 = 40,7999 / code = 40,8 typ float
+#i = (9 + (3 - (2 + 3))) / 2 = 3.5 / 3.5 typ float
+#i = 5**4/2 = 312.5 / 312.5 typ float
 #i = int(-5/2) = -2,5 / -2 weil rundung gegen 0 bzw schneidet nachkomma ab
 #print(i)
 
@@ -56,6 +56,14 @@
 #    print("X gleich 42")
 
 #%% md
+
+#x = 10
+#if x == 10:
+#    print("X ist 10")
+#else:
+#    print("X ist nicht 10")
+
+
 ## Aufgabe 4: Ostertermin
 #Der deutsche Mathematiker Carl Friedrich Gauß hat im Jahr 1816 einen Algorithmus für die Berechnung des Osterdatums - genauer, des Ostersonntags - bereitgestellt. Angenommen, die Variable `Jahr` enthält die Jahreszahl (z.B. 2024 für das Jahr 2024), so berechnen die folgenden nacheinander anzuwendenden Formeln das Osterdatum:
 
