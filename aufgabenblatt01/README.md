@@ -14,6 +14,8 @@ Setze bei Schritt 3 fort.
 
 Das ist ein Größensortieralgorithmus, man nehme die kleinste Zahl aus `L` (die eingabeliste)
 und setze diese kleineste Zahl an die hinterstelle stelle in `S` bis die Liste `L` leer ist.
+Alg 1. Orientiert sich an den Werten in der Liste `S`.
+Alg 2. geht von vorne nach hinten durch, und sortiert erst in Liste `L`
 
 ### Aufgabe 1.2
 
@@ -42,7 +44,15 @@ i = 5**4/2 = 312.5 / 312.5
 i = int(-5/2) = -2,5 / -2 #weil rundung gegen 0 bzw schneidet nachkomma ab
 print(i)
 ``` 
-
+```
+x = 10
+if x == 10:
+    print("X ist 10")
+else:
+    print("X ist nicht 10")
+    ```
+    
+    Wir müssen == den vergleichsoperator statt = benutzen
 ## Aufgabe 3
 
 ``` 
