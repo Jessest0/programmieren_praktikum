@@ -1,6 +1,3 @@
-from operator import truediv
-
-
 def validate_code(code):
 
     if code == code[12]:

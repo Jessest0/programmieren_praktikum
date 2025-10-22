@@ -108,5 +108,29 @@ Testen Sie die Funktion mit einer ISBN-13 oder einer EAN-13 eines Buchs oder Art
 Hinweis zur Implementierung
 Verwenden Sie eine for-Schleife, um über die Ziffern des Codes zu iterieren, und bedenken Sie, dass Sie Ziffern eines Strings direkt in Integer umwandeln können, um die Berechnungen durchzuführen.
 
+```
+def validate_code(code):
+
+    if code == code[12]:
+        erg = 0
+        for i in range(1, len(code)):
+                if i % 2 == 0:
+
+                    erg += int(code[i]) * 3
+                else:
+                    erg += int(code[i])
+
+        if (erg % 10 == 0):
+            return True
+    else:
+        return False
 
 
+code = input("Geben Sie einen EAN-13- oder ISBN-13-Code ein:")
+if validate_code(code):
+
+    print("Dieser Code ist valide")
+else:
+    print("Dieser Code ist nicht valide")
+
+```
