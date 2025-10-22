@@ -1,8 +1,8 @@
 # Aufgabenblatt 2 Lösung
 
-# Aufgabe 1
 
-#%% md
+
+
 ## Aufgabe 1: Pyramide
 Schreiben Sie eine Funktion `pyramid`, die eine Pyramide mit der angegebenen Anzahl von Ebenen ausgibt.
 
@@ -29,9 +29,8 @@ def pyramid(n):
 pyramid(1)
 ```
 
-## Aufgabe 2
 
-#%% md
+
 ## Aufgabe 2: Größter Gemeinsamer Teiler
 Schreiben Sie eine Funktion `ggt`, die den größten gemeinsamen Teiler zweier gegebener natürlicher Zahlen (1,2,3,...) berechnet.
 Der größte gemeinsame Teiler zweier ganzer Zahlen ist die größte Zahl, die beide Zahlen ohne Rest teilt.
@@ -70,7 +69,14 @@ def ggt(a, b):
 ggt(25,5)
 ```
 
-## Aufgabe 3
+
+## Aufgage 3: Primzahlen erkennen
+Schreiben Sie eine Funktion `ist_prim`, die `True` zurückgibt, wenn die übergebene natürliche Zahl (1, 2, 3, ...) eine Primzahl ist, und ansonsten `False`.
+Eine natürliche Zahl `n` ist genau dann eine Primzahl, wenn sie größer als 1 ist und durch keine der ganzen Zahlen von `2` bis `n-1` (jeweils einschließlich) ohne Rest teilbar ist.
+
+**Hinweis**: Sie dürfen annehmen, dass die übergebene Zahl eine natürliche Zahl ist!
+
+**Beispiel**: Das Ergebnis von `ist_prim(29)` soll `True` sein, das von `ist_prim(25)` soll `False` sein (da 25 durch 5 teilbar ist).
 ```
 def ist_prim(n):
 
