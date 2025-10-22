@@ -9,3 +9,4 @@ def ist_prim(n):
 
 
 ist_prim(25)
+
