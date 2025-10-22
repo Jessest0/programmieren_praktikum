@@ -1,11 +1,23 @@
-def ist_prim(n):
+def validate_code(code):
 
-    if(n > 1):
-        for i in range(2, n-1):
-            if(n % i == 0):
-                return False
+    if code == code[12]:
+        erg = 0
+        for i in range(1, len(code)):
+                if i % 2 == 0:
 
-        return True
+                    erg += int(code[i]) * 3
+                else:
+                    erg += int(code[i])
+
+        if (erg % 10 == 0):
+            return True
     else:
         return False
-print(ist_prim(29))
+
+
+code = input("Geben Sie einen EAN-13- oder ISBN-13-Code ein:")
+if validate_code(code):
+
+    print("Dieser Code ist valide")
+else:
+    print("Dieser Code ist nicht valide")
