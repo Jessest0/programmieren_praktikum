@@ -93,3 +93,20 @@ print(ist_prim(29))
 
 
 
+## Aufgabe 4: EAN-13 oder ISBN-13 prüfen
+Bücher und andere Waren werden häufig mit Artikelnummern ausgezeichnet. Häufig werden dafür die Systeme ISBN (International Standard Book Number) oder EAN (European Article Number) verwendet.
+
+Die Spezialformen EAN-13 und ISBN-13 bestehen jeweils aus 13 Ziffern, wobei nicht alle dieser Ziffern frei wählbar sind. Vielmehr gibt es einen Test, mit dem sich prüfen lässt, ob eine bestimmte Ziffernfolge eine valide EAN-13 oder ISBN-13 ist:
+
+Multiplizieren Sie jede Ziffer der Nummer abwechselnd mit 1 und 3, beginnend mit 1 für die erste Ziffer.
+Addieren Sie alle Ergebnisse dieser Multiplikationen.
+Wenn die resultierende Summe durch 10 teilbar ist, dann ist die Nummer gültig. Andernfalls ist sie ungültig.
+Implementieren Sie eine Funktion validate_code(code), die einen String code mit genau 13 Ziffern nimmt und prüft, ob es sich um eine gültige ISBN-13 oder EAN-13 Nummer handelt. Die Funktion soll True zurückgeben, wenn die Nummer gültig ist, und False, wenn sie ungültig ist.
+
+Testen Sie die Funktion mit einer ISBN-13 oder einer EAN-13 eines Buchs oder Artikels in Ihrem Umfeld (z.B. Ihrer Trinkflasche). Modifizieren Sie eine Ziffer des Codes und prüfen Sie, ob der so veränderte Code als invalide erkannt wird.
+
+Hinweis zur Implementierung
+Verwenden Sie eine for-Schleife, um über die Ziffern des Codes zu iterieren, und bedenken Sie, dass Sie Ziffern eines Strings direkt in Integer umwandeln können, um die Berechnungen durchzuführen.
+
+
+
