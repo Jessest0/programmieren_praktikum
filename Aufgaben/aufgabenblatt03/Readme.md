@@ -87,3 +87,23 @@ reactiontime = (endtime - starttime) / 1000000
 print(reactiontime)
 
 ```
+
+## Aufgabe 4
+
+```
+
+1.Eingabe mit Input in eine variable speichern, gibt an wie viele zeichen 
+
+x = int(Input("Geben sie an wie lang das Passwort sein soll")
+
+2. if abfrage ob passwort: 
+	if Input < 8 or Input > 200:
+		for i in range(0, len(x)):
+			PW[i] =  randomchoise(sting.ascii:letters + string Digits)
+	else: 
+		return false
+	
+
+print("Ihr Passwort ist", PW)
+
+```
