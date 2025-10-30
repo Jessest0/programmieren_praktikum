@@ -58,3 +58,32 @@ for x  in range(x, -1, -1):
 
 ## Aufgabe 3: Reaktionszeit messen
 
+Schreiben Sie ein Programm, das die Reaktionszeit der Nutzerin oder des Nutzers misst:
+
+1. Das Programm wartet eine zufällige Anzahl von Sekunden.
+2. Nach Ablauf der Zeit gibt es eine Meldung aus und wartet auf eine Eingabe.
+3. Nach der Eingabe gibt es die Reaktionszeit der Nutzerin oder des Nutzers in Sekunden aus.
+
+**Hinweise**
+* Verwenden Sie die Funktion `time.sleep()`, um die gewünschte Zeit zu warten.
+* Die Funktion `time.time_ns()` gibt Ihnen die [Unixzeit](https://de.wikipedia.org/wiki/Unixzeit) in Nanosekunden (1 Nanosekunde = 1/1 000 000 000 Sekunde) aus. Die Reaktionszeit können Sie bestimmen, indem Sie einmal vor der Meldung und einmal nach der Eingabe die aktuelle Unixzeit bestimmen und die Differenz aus den beiden Zeiten berechnen.
+* Nutzen Sie die Funktion [`random.uniform()`](https://docs.python.org/3/library/random.html#random.uniform), um eine zufällige Kommazahl in einem bestimmten Bereich zu erzeugen. Alle Zahlen im angegebenen Bereich werden mit gleicher Wahrscheinlichkeit vorkommen (sog. Gleichverteilung oder "Uniform Random Distribution", daher der Name der Funktion).
+
+```
+import random
+import time
+
+waittime = random.uniform( 2, 10)
+time.sleep(waittime)
+
+starttime = time.time_ns()
+
+input("Drücken sie schnell Enter")
+
+endtime = time.time_ns()
+
+reactiontime = (endtime - starttime) / 1000000
+
+print(reactiontime)
+
+```
