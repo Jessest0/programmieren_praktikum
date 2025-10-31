@@ -21,10 +21,10 @@ x = "."
 y = "#"
 
 def pyramid(n):
-    i = 4
+    i = 3
     for n in range(1,5):
-        i -= 1
         print(x*i+y*n)
+        i -= 1
 
 pyramid(1)
 ```
@@ -113,17 +113,16 @@ def validate_code(code):
 
     if code == code[12]:
         erg = 0
-        for i in range(1, len(code)):
+        for i in range(0, len(code)):
                 if i % 2 == 0:
-
-                    erg += int(code[i]) * 3
-                else:
                     erg += int(code[i])
+                else:
+                    erg += int(code[i]) * 3
 
         if (erg % 10 == 0):
             return True
-    else:
-        return False
+        else:
+            return False
 
 
 code = input("Geben Sie einen EAN-13- oder ISBN-13-Code ein:")
