@@ -30,6 +30,7 @@ class Person:
 
         return datetime.date(jahre, self.birth.month, self.birth.day)
 
+
 class Personendatenbank:
     def __init__(self, personendaten):
         self.personendaten = personendaten

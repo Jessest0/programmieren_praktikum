@@ -32,3 +32,5 @@ Setzen Sie ein Projekt in PyCharm auf, in dem Ihr Personaldatenbank-Programm auc
 Testen Sie, ob Ihr Programm noch korrekt funktioniert.
 
 **Hinweis**: Erstellen Sie aus Ihrem Projektverzeichnis eine ZIP-Datei und reichen Sie diese als Lösung in FELIX ein.
+
+.
