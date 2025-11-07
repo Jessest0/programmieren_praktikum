@@ -33,5 +33,4 @@ class Person:
 geburtsdatum = datetime.date(2005, 7, 13)
 x = Person('Jesse', 'Strunsky', geburtsdatum)
 
-print(x)
 print( x.naechster_geburtstag())
