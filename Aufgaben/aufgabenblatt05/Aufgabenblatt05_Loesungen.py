@@ -53,15 +53,20 @@ class Personendatenbank:
                 return person
         return None
 
+    def entfernen(self,fname, lname):
+        person = self.findePerson(fname, lname)
+        if person:
+            self.personenliste.remove(person)
+
 
 x = Person("Jesse", "Strunsky", "20050713")
 y = Person("Nick","Strunsky","20070812")
 
-z = Personendatenbank([x])
+z = Personendatenbank([x,y])
+print(z.findePerson("Jesse","Strunsky"))
 print(z)
-z.einfuegen(y)
-print(z)
-z.findePerson("Jesse", "Strunsky")
+print(z.leeren())
+
 
 
 
