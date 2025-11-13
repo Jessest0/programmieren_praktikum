@@ -58,6 +58,15 @@ class Personendatenbank:
         if person:
             self.personenliste.remove(person)
 
+    def laden(self,datei):
+        datei = open(datei, "r", encoding="utf-8")
+        for line in datei:
+            print(line)
+        datei.close()
+
+    def speichern(selfself, datei):
+        datei = open(datei, "r", encoding="utf-8")
+
 
 def hauptmenue():
     datenbank = Personendatenbank()

@@ -86,13 +86,65 @@ class Personendatenbank:
             self.personenliste.remove(person)
 
 
-x = Person("Jesse", "Strunsky", "20050713")
-y = Person("Nick","Strunsky","20070812")
+def hauptmenue():
+    datenbank = Personendatenbank()
 
-z = Personendatenbank([x,y])
-print(z.findePerson("Jesse","Strunsky"))
-print(z)
-print(z.leeren())
+    while True:
+        print("\n--- Personendatenbank ---")
+        print("1: Person hinzufügen")
+        print("2: Person suchen")
+        print("3: Person entfernen")
+        print("4: Alle Personen anzeigen")
+        print("5: Datenbank leeren")
+        print("0: Beenden")
+
+        auswahl = input("Bitte wählen: ")
+
+        if auswahl == "1":
+            vorname = input("Vorname: ")
+            nachname = input("Nachname: ")
+            geburt = input("Geburtsdatum (YYYYMMDD): ")
+            person = Person(vorname, nachname, geburt)
+            datenbank.einfuegen(person)
+            print("✅ Person hinzugefügt.")
+
+        elif auswahl == "2":
+            vorname = input("Vorname: ")
+            nachname = input("Nachname: ")
+            person = datenbank.findePerson(vorname, nachname)
+            if person:
+                print(f"👤 Gefunden: {person.fName} {person.lName}")
+                print(f"📅 Geburtsdatum: {person.birth}")
+                print(f"🎂 Alter: {person.alter()} Jahre")
+            else:
+                print("❌ Person nicht gefunden.")
+
+        elif auswahl == "3":
+            vorname = input("Vorname: ")
+            nachname = input("Nachname: ")
+            datenbank.entfernen(vorname, nachname)
+            print("🗑️ Person entfernt (falls vorhanden).")
+
+        elif auswahl == "4":
+            print("\n📋 Personenliste:")
+            print(datenbank)
+
+        elif auswahl == "5":
+            datenbank.leeren()
+            print("🧹 Datenbank geleert.")
+
+        elif auswahl == "0":
+            print("👋 Programm beendet.")
+            break
+
+        else:
+            print("⚠️ Ungültige Eingabe. Bitte erneut versuchen.")
+
+hauptmenue()
+
+
+
+
 
 
 
