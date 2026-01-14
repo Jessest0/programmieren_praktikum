@@ -1,18 +1,36 @@
 import datetime
 import os
 
+class Name:
+    def __init__(self, name, vorname):
+        self.name = name
+        self.vorname = vorname
+
+    def __str__(self):
+        return f"{self.vorname} {self.name}"
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __eq__(self, other):
+        if not isinstance(other, Name):
+            return False
+        return self.name == other.name and self.vorname == other.vorname
+
+    def __hash__(self):
+        return hash((self.name, self.vorname))
+
+
 class Person:
-    def __init__(self, fName, lName, birth):
-        self.fName = fName
-        self.lName = lName
-        self.birth = birth
+    def __init__(self, name: Name, birth):
+        self.name = name
         if isinstance(birth, str):
             self.birth = datetime.datetime.strptime(birth, "%d%m%Y").date()
         else:
             self.birth = birth
 
     def __str__(self):
-        return f'{self.fName} {self.lName} {self.birth}'
+        return f'{self.name} {self.birth}'
 
     def __repr__(self):
         return self.__str__()
@@ -31,39 +49,43 @@ class Person:
             jahre += 1
         return datetime.date(jahre, self.birth.month, self.birth.day)
 
+
 class Personendatenbank:
-    def __init__(self, personenliste=[]):
-        self.personenliste = personenliste
+    def __init__(self, personen=None):
+        if personen is None:
+            personen = {}
+        self.personen = personen   # Dictionary: Name → Person
 
     def __str__(self):
-        return "\n".join(str(person) for person in self.personenliste)
+        return "\n".join(str(person) for person in self.personen.values())
 
     def leeren(self):
-        self.personenliste = []
+        self.personen = {}
 
     def einfuegen(self, person):
-        self.personenliste = self.personenliste + [person]
+        if person.name in self.personen:
+            raise ValueError(f"Person '{person.name}' existiert bereits in der Datenbank.")
+        self.personen[person.name] = person
 
-    def findePerson(self, fname, lname):
-        for person in self.personenliste:
-            if person.fName == fname and person.lName == lname:
-                return person
-        return None
+    def findePerson(self, vorname, nachname):
+        suchname = Name(nachname, vorname)
+        return self.personen.get(suchname, None)
 
-    def entfernen(self, fname, lname):
-        person = self.findePerson(fname, lname)
-        if person:
-            self.personenliste.remove(person)
+    def entfernen(self, vorname, nachname):
+        suchname = Name(nachname, vorname)
+        if suchname in self.personen:
+            del self.personen[suchname]
 
     def speichern(self, dateiname):
         with open(dateiname, "w", encoding="utf-8") as f:
-            for person in self.personenliste:
-                zeile = f"{person.fName},{person.lName},{person.birth.strftime('%d%m%Y')}\n"
+            for person in self.personen.values():
+                zeile = f"{person.name.vorname},{person.name.name},{person.birth.strftime('%d%m%Y')}\n"
                 f.write(zeile)
 
-# Globale Funktion zum Laden
+
 def laden(dateiname):
     datenbank = Personendatenbank()
+
     if os.path.exists(dateiname):
         with open(dateiname, "r", encoding="utf-8") as datei:
             for line in datei:
@@ -72,17 +94,21 @@ def laden(dateiname):
                 if len(teile) != 3:
                     print(f"⚠️ Ungültige Zeile übersprungen: {line}")
                     continue
-                fName, lName, birth = [teil.strip() for teil in teile]
+
+                vorname, nachname, birth = [teil.strip() for teil in teile]
+
                 try:
-                    person = Person(fName, lName, birth)
+                    name = Name(nachname, vorname)
+                    person = Person(name, birth)
                     datenbank.einfuegen(person)
                 except ValueError as e:
                     print(f" Fehler beim Verarbeiten von '{line}': {e}")
     else:
         print(f" Datei '{dateiname}' nicht gefunden. Leere Datenbank wird erstellt.")
+
     return datenbank
 
-# Hauptmenü
+
 def hauptmenue():
     dateipfad = "database.csv"
     datenbank = laden(dateipfad)
@@ -104,16 +130,22 @@ def hauptmenue():
             vorname = input("Vorname: ")
             nachname = input("Nachname: ")
             geburt = input("Geburtsdatum (DDMMYYYY): ")
-            person = Person(vorname, nachname, geburt)
-            datenbank.einfuegen(person)
-            print("Person hinzugefügt.")
+
+            name = Name(nachname, vorname)
+            person = Person(name, geburt)
+
+            try:
+                datenbank.einfuegen(person)
+                print("Person hinzugefügt.")
+            except ValueError as e:
+                print(f"Fehler: {e}")
 
         elif auswahl == "2":
             vorname = input("Vorname: ")
             nachname = input("Nachname: ")
             person = datenbank.findePerson(vorname, nachname)
             if person:
-                print(f" Gefunden: {person.fName} {person.lName}")
+                print(f" Gefunden: {person.name}")
                 print(f" Geburtsdatum: {person.birth}")
                 print(f" Alter: {person.alter()} Jahre")
             else:
@@ -148,5 +180,5 @@ def hauptmenue():
         else:
             print(" Ungültige Eingabe. Bitte erneut versuchen.")
 
-# Start
+
 hauptmenue()

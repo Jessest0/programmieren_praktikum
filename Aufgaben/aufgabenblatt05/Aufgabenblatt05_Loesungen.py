@@ -42,7 +42,7 @@ class Personendatenbank:
         return "\n".join(str(person) for person in self.personenliste)
 
     def leeren(self):
-        self.personenliste = []
+        self.personenliste.clear()
 
     def einfuegen(self, person):
         self.personenliste = self.personenliste + [person]
@@ -86,32 +86,32 @@ def hauptmenue():
             nachname = input("Nachname: ")
             person = datenbank.findePerson(vorname, nachname)
             if person:
-                print(f"👤 Gefunden: {person.fName} {person.lName}")
-                print(f"📅 Geburtsdatum: {person.birth}")
-                print(f"🎂 Alter: {person.alter()} Jahre")
+                print(f" Gefunden: {person.fName} {person.lName}")
+                print(f" Geburtsdatum: {person.birth}")
+                print(f" Alter: {person.alter()} Jahre")
             else:
-                print("❌ Person nicht gefunden.")
+                print(" Person nicht gefunden.")
 
         elif auswahl == "3":
             vorname = input("Vorname: ")
             nachname = input("Nachname: ")
             datenbank.entfernen(vorname, nachname)
-            print("🗑️ Person entfernt (falls vorhanden).")
+            print("️ Person entfernt (falls vorhanden).")
 
         elif auswahl == "4":
-            print("\n📋 Personenliste:")
+            print("\n Personenliste:")
             print(datenbank)
 
         elif auswahl == "5":
             datenbank.leeren()
-            print("🧹 Datenbank geleert.")
+            print(" Datenbank geleert.")
 
         elif auswahl == "0":
-            print("👋 Programm beendet.")
+            print(" Programm beendet.")
             break
 
         else:
-            print("⚠️ Ungültige Eingabe. Bitte erneut versuchen.")
+            print(" Ungültige Eingabe. Bitte erneut versuchen.")
 
 hauptmenue()
 
