@@ -1,0 +1,1 @@
+print("Nicht karl der gefickte")
