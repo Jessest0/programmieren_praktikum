@@ -4,21 +4,20 @@ from matplotlib.colors import ListedColormap
 
 #%%
 def dfs(maze, x, y, end_x, end_y, path):
-    # Wenn wir das Ziel erreicht haben → Erfolg
     if (x, y) == (end_x, end_y):
         path.append((x, y))
         maze[x][y] = '.'
         return True
 
-    # Wenn Feld nicht begehbar ist → Mauer oder schon besucht
+    #Mauer oder schon probiert
     if maze[x][y] != ' ':
         return False
 
-    # Markiere aktuellen Schritt als besucht
+    # Schon da gewesen
     maze[x][y] = '.'
     path.append((x, y))
 
-    # Bewegungsrichtungen: oben, rechts, unten, links
+
     directions = [(1,0), (-1,0), (0,1), (0,-1)]
 
     for dx, dy in directions:
