@@ -2,10 +2,38 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import ListedColormap
 
-
+#%%
 def dfs(maze, x, y, end_x, end_y, path):
+    # Wenn wir das Ziel erreicht haben → Erfolg
+    if (x, y) == (end_x, end_y):
+        path.append((x, y))
+        maze[x][y] = '.'
+        return True
 
-   pass
+    # Wenn Feld nicht begehbar ist → Mauer oder schon besucht
+    if maze[x][y] != ' ':
+        return False
+
+    # Markiere aktuellen Schritt als besucht
+    maze[x][y] = '.'
+    path.append((x, y))
+
+    # Bewegungsrichtungen: oben, rechts, unten, links
+    directions = [(1,0), (-1,0), (0,1), (0,-1)]
+
+    for dx, dy in directions:
+        nx, ny = x + dx, y + dy
+
+        # Grenzen prüfen
+        if 0 <= nx < len(maze) and 0 <= ny < len(maze[0]):
+            if dfs(maze, nx, ny, end_x, end_y, path):
+                return True
+
+    # Dead-End markieren
+    maze[x][y] = 'X'
+    path.pop()
+    return False
+
 
 def print_maze(maze, start, end):
     color_map = {'#': 0, ' ': 1, '.': 2, 'S': 3, 'E': 4, 'X': 5}
@@ -61,7 +89,6 @@ for start, end in starts_ends:
         "#                   ##",
         "######################"
     ]]
-
 
 def test_mazes(mazes, starts_ends_list):
     results = []
@@ -123,4 +150,3 @@ test_results = test_mazes(mazes, starts_ends_list)
 
 for result in test_results:
     print(f"Path from {result[0]} to {result[1]} found: {result[2]}")
-
